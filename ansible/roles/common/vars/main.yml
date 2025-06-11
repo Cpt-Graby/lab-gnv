@@ -1,0 +1,20 @@
+---
+# vars file for common
+
+ssh_user: bocal
+
+ssh_authorized_keys:
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRd6FEz1k6gqNMHGPX1j4jOD3KFDkTnl+6gc6YDy+P8 kino@Spellbook.local"
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKKnVinDXPJXwlsGiNexWUm62xY5uWx1MfrBAbSdecD/ eduardo@citadel"
+  - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC9AZftndWcGTcz3sSC6dngi7r5mKyUlvntM9AjwAULULcdWbzeDN7yvVEcPIVdtinwKg1p+zmMjiO4YlxoFXNafb1ub6GeX9Vuc/5+3McBM0e4Y0WAirW9nAdEm/aYFq/paCYKrsZDmLwY9anGt6Jzgp6U+rNb3FwEll58KsxvMIoW/nCk11bsgGbADv3FTQA8uhjT4tNvlWsPlt7+SQEZY2smgwR2TbP/9yzlhFM/TtNtbRtxtzIP4lJvtG1cuT+mWR0JQMWlMl2kt6zIsL6SdoOaMZfncWcx/n6B1yGyKx+rK9wrbfmfxY2/8LxKw/6/v9CWKt0KF68x5SKUiMTFX8ERfG36D5RqzLF4X+hmXmVKfdrAoLHQrSk/poyT+wYm87pu1GkKPg9p4WvtFOyabrmbUvgmJi2PmNWOkjiWyKeiP7hMvePRERPpwZGuJXSpIBT8EcDZbPWLTRK8SafA8UJFqumBNTidJQQzyqgQLZ+0Af4kwgdFHncIQhJnJ58= noich@potiron"
+  - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWIimGGC9sn2XHHcL7lvdF1/yr1StuRqjwTKeA3SQ2QtANxkH0dabcqFOxGfFHYqNR8JwI5Ce4CCxoRYUqLrIpqDC6klQBUz64FNiU2q+CjU9SH+YQECn7TDmCbx7RStzl9T9ygyFk3F/muapSXCosTuXhvW+nnxkFlI2r9WhbMS8xXNOlw5ldHetIsmrj0DdtThsHiMMTm2pY3RXqNQrr2Tq3VXJ66LDBh+P16gcMXbv3zU0QDNLtbINF0J7eV2/hJYm0fuhTeLkfLjgM07wywc7/3ZJjsXJxO9OWJhVYQ+7Wfy8aD65FnT/TObyMDFExp/tK6KwigF0UIVv68rR3 tyrael@42lausanne.ch"
+  - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII9DnNcTE30coZjm48kNt7XM8e6Tl/38Nnwy+8B4cKvT lmedrano@student.42lausanne.ch"
+
+  
+packages_to_install:
+  - fail2ban
+  - ufw
+  - vim
+  - htop
+  - curl
+

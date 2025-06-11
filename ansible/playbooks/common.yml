@@ -1,0 +1,5 @@
+- name: Harden servers
+  hosts: all
+  become: false
+  roles:
+    - {role: common}

@@ -1,0 +1,67 @@
+---
+- name: Set hostname to inventory name
+  hostname:
+    name: "{{ inventory_hostname }}"
+
+- name: Ensure /etc/hosts contains hostname entry
+  lineinfile:
+    path: /etc/hosts
+    regexp: '^127\.0\.1\.1'
+    line: "127.0.1.1 {{ inventory_hostname }}"
+    state: present
+
+
+- name: Ensure packages are installed
+  apt:
+    name: "{{ packages_to_install }}"
+    state: present
+    update_cache: true
+
+- name: Ensure .ssh directory exists
+  file:
+    path: "/home/{{ ssh_user }}/.ssh"
+    state: directory
+    owner: "{{ ssh_user }}"
+    group: "{{ ssh_user }}"
+    mode: '0700'
+
+- name: Add authorized SSH keys
+  authorized_key:
+    user: "{{ ssh_user }}"
+    key: "{{ item }}"
+  loop: "{{ ssh_authorized_keys }}"
+
+- name: Disable password authentication
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^#?PasswordAuthentication'
+    line: 'PasswordAuthentication no'
+    state: present
+    backup: yes
+
+- name: Restart SSH service
+  service:
+    name: ssh
+    state: restarted
+
+# --- Security extras ---
+- name: Enable UFW
+  ufw:
+    state: enabled
+
+- name: Deny all incoming by default
+  ufw:
+    default: deny
+    direction: incoming
+
+- name: Allow SSH through UFW
+  ufw:
+    rule: allow
+    name: OpenSSH
+
+- name: Ensure fail2ban is started and enabled
+  service:
+    name: fail2ban
+    enabled: true
+    state: started
+
