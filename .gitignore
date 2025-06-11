@@ -1,2 +1,3 @@
 secret
 terraform/credentials.auto.tfvars
+packer/credentials*
