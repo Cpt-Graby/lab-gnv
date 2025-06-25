@@ -16,6 +16,10 @@ variable "proxmox_api_token_secret" {
     sensitive = true
 }
 
+variable "proxmox_node_name" {
+    type      = string
+}
+
 locals {
     disk_storage = "local-lvm"
 }
@@ -28,13 +32,13 @@ source "proxmox-iso" "ubuntu-server-noble" {
     username    = "${var.proxmox_api_token_id}"
     token       = "${var.proxmox_api_token_secret}"
     # (Optional) Skip TLS Verification
-    #insecure_skip_tls_verify = true
+    insecure_skip_tls_verify = true
 
     # VM General Settings
-    node                 = "42LDigilab"
-    vm_id                = "100"
+    node                 = "${var.proxmox_node_name}"
+    vm_id                = "200"
     vm_name              = "ubuntu-server-noble"
-    template_description = "Ubuntu Server Noble Image"
+    template_description = "Alexis test Ubuntu Server Noble Image"
 
     # VM OS Settings
     # (Option 1) Local ISO File
