@@ -20,6 +20,19 @@ variable "proxmox_node_name" {
     type      = string
 }
 
+variable "root_password_hash" {
+    type = string
+}
+
+variable "ssh_password" {
+    type = string
+}
+
+
+variable "ansible_pubkey" {
+    type = string
+}
+
 locals {
     disk_storage = "local-lvm"
 }
@@ -131,7 +144,8 @@ source "proxmox-iso" "ubuntu-server-noble" {
     ssh_username            = "ansible"
 
     # (Option 1) Add your Password here
-    ssh_password        = "bocaltest"
+    ssh_password        = "${var.ssh_password}"
+    #ssh_password = "$6$IxZ63Eo9DCBGFQEq$VmvVl6ZBp3CZB.dKTFSoVitxv./FeKTNIVDfHBlOfaXZqeBxujjcGXgwomO.2U/W9I/LM6.Rxtlqd8u4HKQf5."
     # - or -
     # (Option 2) Add your Private SSH KEY file here
     # ssh_private_key_file    = "~/.ssh/id_rsa"

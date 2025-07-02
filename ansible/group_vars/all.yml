@@ -1,0 +1,27 @@
+base_packages:         
+  - ntp                
+  - rsyslog            
+  - openssl            
+  - apt-transport-https
+  - zsh                
+  - ufw                
+  - htop               
+  - iftop              
+  - ngrep              
+  - nload              
+  - nmap               
+  - iotop              
+  - mtr                
+  - vim                
+  - tcpdump            
+  - tree               
+  - wget               
+  - curl               
+  - git                
+  - dnsutils           
+  - net-tools          
+
+pub_key:
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGRd6FEz1k6gqNMHGPX1j4jOD3KFDkTnl+6gc6YDy+P8 kino@Spellbook.local
+  - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKKnVinDXPJXwlsGiNexWUm62xY5uWx1MfrBAbSdecD/ eduardo@citadel
+

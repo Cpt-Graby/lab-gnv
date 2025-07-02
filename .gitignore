@@ -2,3 +2,4 @@ secret
 terraform/credentials.auto.tfvars
 packer/credentials*
 proxmox-ca.pem
+ansible/ansible_key

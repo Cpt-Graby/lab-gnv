@@ -10,14 +10,17 @@ autoinstall:
     disable_root: true
     ssh_quiet_keygen: true
     allow_public_ssh_keys: true
+
   packages:
     - qemu-guest-agent
     - sudo
+
   storage:
     layout:
       name: direct
     swap:
       size: 0
+
   user-data:
     package_upgrade: false
     timezone: Europe/Berlin
@@ -27,8 +30,12 @@ autoinstall:
         lock-passwd: false
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
-        plain_text_passwd: bocaltest
+        passwd: "$6$IxZ63Eo9DCBGFQEq$VmvVl6ZBp3CZB.dKTFSoVitxv./FeKTNIVDfHBlOfaXZqeBxujjcGXgwomO.2U/W9I/LM6.Rxtlqd8u4HKQf5."
         # - or -
         #passwd
-        # ssh_authorized_keys:
-        #   - your-ssh-key
+        ssh_authorized_keys:
+           - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICzzhiPlrnIls9L09quNOcNcVEmaBtB8VHec9hRsBp1o kino@tardis
+      #- name: root
+      # shell: /bin/bash
+      # lock-passwd: false
+      # passwd:$6$BlnvoLTU3kjRq7N4$njvrGY.myoOvNbfYfPZ4mzcdXLd34shdlHq05/ZsRQ9twJyfSdVpxqzW5sIZvqKq7BwzT1.l.6alLxMQVgUwn/

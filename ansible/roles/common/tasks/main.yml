@@ -1,4 +1,6 @@
 ---
+- include_tasks: users.yml
+
 - name: Set hostname to inventory name
   hostname:
     name: "{{ inventory_hostname }}"
@@ -10,26 +12,11 @@
     line: "127.0.1.1 {{ inventory_hostname }}"
     state: present
 
-
 - name: Ensure packages are installed
   apt:
     name: "{{ packages_to_install }}"
     state: present
     update_cache: true
-
-- name: Ensure .ssh directory exists
-  file:
-    path: "/home/{{ ssh_user }}/.ssh"
-    state: directory
-    owner: "{{ ssh_user }}"
-    group: "{{ ssh_user }}"
-    mode: '0700'
-
-- name: Add authorized SSH keys
-  authorized_key:
-    user: "{{ ssh_user }}"
-    key: "{{ item }}"
-  loop: "{{ ssh_authorized_keys }}"
 
 - name: Disable password authentication
   lineinfile:
