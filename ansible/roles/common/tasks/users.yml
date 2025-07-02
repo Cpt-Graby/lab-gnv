@@ -1,0 +1,26 @@
+---
+- name: Check that /root/.ssh exists
+  tags: users
+  file:
+    path: /root/.ssh
+    state: directory
+    mode: 0700
+    owner: root
+    group: root
+
+- name: Check that ansible user exists
+  tags: users
+  user:
+    name: ansible
+    shell: /usr/bin/zsh
+    createhome: yes
+    home: /home/ansible
+    state: present
+
+- name: Copy /root/authorized_keys
+  tags: users
+  template:
+    src: "root/.ssh/authorized_keys.j2"
+    dest: "/root/.ssh/authorized_keys"
+    owner: "root"
+    group: "root"
